@@ -1,0 +1,1 @@
+"""Typed AgentGuard tool registry."""

@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: agentguard
+      POSTGRES_USER: agentguard
+      POSTGRES_PASSWORD: agentguard
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentguard"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - agentguard-postgres:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://agentguard:agentguard@postgres:5432/agentguard
+      FRONTEND_ORIGIN: http://localhost:3000
+      AUTH_MODE: development
+      LLM_PROVIDER: fake
+      MCP_SERVER_COMMAND: python
+      MCP_SERVER_ARGS: -m,mcp_server.server
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+      NEXT_PUBLIC_AUTH_MODE: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  agentguard-postgres:
+

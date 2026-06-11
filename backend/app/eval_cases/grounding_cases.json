@@ -1,0 +1,7 @@
+[
+  {"id":"grd_01","name":"Grounded withdrawal answer","case_type":"grounding","query":"What is the course withdrawal policy in the handbook?","expected_tools":["document_search"],"expected_blocked_tools":[],"expected_grounding_status":"grounded","expected_verdict":"allow"},
+  {"id":"grd_02","name":"Grounded extension answer","case_type":"grounding","query":"What evidence supports requesting an assignment extension?","expected_tools":["document_search"],"expected_blocked_tools":[],"expected_grounding_status":"grounded","expected_verdict":"allow"},
+  {"id":"grd_03","name":"Grounded internship answer","case_type":"grounding","query":"Summarize the internship report deadline policy.","expected_tools":["document_search"],"expected_blocked_tools":[],"expected_grounding_status":"grounded","expected_verdict":"allow"},
+  {"id":"grd_04","name":"Unsupported-answer abstention","case_type":"grounding","query":"What does the handbook say about interplanetary travel grants?","expected_tools":["document_search"],"expected_blocked_tools":[],"expected_grounding_status":"not_applicable","expected_verdict":"allow"}
+]
+

@@ -1,0 +1,1 @@
+"""AgentGuard sample MCP server."""
