@@ -16,6 +16,11 @@ observability control plane between a model and every tool execution.
   evaluations, tools, policies, and responsive approval workflows
 - 24 deterministic evaluation cases and local/demo seed data
 
+## Public demo
+
+- Frontend: [agentguard-livid.vercel.app](https://agentguard-livid.vercel.app)
+- Backend health: [backend-production-e897.up.railway.app/health/ready](https://backend-production-e897.up.railway.app/health/ready)
+
 ## Quick start
 
 ```bash
@@ -39,6 +44,8 @@ are required.
 
 Set `LLM_PROVIDER=openai`, `OPENAI_API_KEY`, and optionally `OPENAI_MODEL`.
 OpenAI-specific response objects remain inside the provider adapter.
+Configure credentials only through private local or deployment environment
+settings. Never commit, publish, paste, or request an API key.
 
 ## Security boundary
 
