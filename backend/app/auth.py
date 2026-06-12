@@ -15,7 +15,7 @@ class CurrentUser:
 
 async def current_user(authorization: str | None = Header(default=None)) -> CurrentUser:
     settings = get_settings()
-    if settings.auth_mode == "development":
+    if settings.auth_mode in {"development", "demo"}:
         return CurrentUser(settings.demo_user_id, True)
     if not authorization or not authorization.startswith("Bearer "):
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Authentication required")

@@ -34,7 +34,8 @@ services:
 
   frontend:
     build:
-      context: frontend
+      context: .
+      dockerfile: frontend/Dockerfile
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
       NEXT_PUBLIC_AUTH_MODE: development
@@ -45,4 +46,3 @@ services:
 
 volumes:
   agentguard-postgres:
-

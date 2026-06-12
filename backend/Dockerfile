@@ -6,5 +6,4 @@ COPY mcp_server /app/mcp_server
 RUN pip install --no-cache-dir -e "/app/backend"
 
 ENV PYTHONPATH=/app
-CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
+CMD ["sh", "-c", "uvicorn backend.app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
